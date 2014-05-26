@@ -21,6 +21,7 @@
  <delete dir="${basedir}/app/build/coverage"/>
  <delete dir="${basedir}/app/build/logs"/>
  <delete dir="${basedir}/app/build/pdepend"/>
+ <delete dir="${basedir}/app/build/code-browser"/>
 </target>
 
 <target name="prepare" depends="clean" description="Prepare for build">
@@ -28,7 +29,6 @@
  <mkdir dir="${basedir}/app/build/coverage"/>
  <mkdir dir="${basedir}/app/build/logs"/>
  <mkdir dir="${basedir}/app/build/pdepend"/>
- <mkdir dir="${basedir}/app/build/code-browser"/>
 </target>
 
 <target name="lint" description="Perform syntax check of sourcecode files">
@@ -111,19 +111,11 @@
  </exec>
 </target>
 
-<target name="vendors" depends="composer" description="Update vendors">
+<target name="vendors" description="Update vendors">
 <exec executable="php" failonerror="true">
 <arg value='${basedir}/composer.phar' />
 <arg value='install' />
 </exec>
 </target>
 
-
- <target name="composer">
-  <exec executable="bash">
-      <arg value="-c" />
-      <arg value="curl -s http://getcomposer.org/installer | php" />
-    </exec>
- </target>
- 
 </project>
