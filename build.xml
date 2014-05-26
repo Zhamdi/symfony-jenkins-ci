@@ -28,6 +28,7 @@
  <mkdir dir="${basedir}/app/build/coverage"/>
  <mkdir dir="${basedir}/app/build/logs"/>
  <mkdir dir="${basedir}/app/build/pdepend"/>
+ <mkdir dir="${basedir}/app/build/code-browser"/>
 </target>
 
 <target name="lint" description="Perform syntax check of sourcecode files">
