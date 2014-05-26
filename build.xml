@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="symfony-ci" default="build">
-   <target name="build" depends="prepare,vendors,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc,phpunit" />
+   <target name="build" depends="prepare,vendors,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpdoc,phpunit,phpcb" />
    <target name="build-parallel" depends="prepare,lint,tools-parallel,phpunit" />
    <target name="tools-parallel" description="Run tools in parallel">
       <parallel threadCount="2">
@@ -101,6 +101,16 @@
          <arg path="${basedir}/app/phpunit.xml" />
       </exec>
    </target>
+   <target name="phpcb" description="Aggregate tool output with PHP_CodeBrowser">
+      <exec executable="phpcb">
+         <arg value="--log" />
+         <arg path="${basedir}/app/build/logs" />
+         <arg value="--source" />
+         <arg path="${basedir}/src" />
+         <arg value="--output" />
+         <arg path="${basedir}/app/build/code-browser" />
+      </exec>
+  </target>
    <target name="vendors" description="Update vendors">
       <exec executable="php" failonerror="true">
          <arg value="${basedir}/composer.phar" />
