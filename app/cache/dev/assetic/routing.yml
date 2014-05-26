@@ -1,0 +1,5 @@
+_assetic:
+    resource: .
+    type: assetic
+_app:
+    resource: /home/hamdi/developpement/workspace/symfony-jenkins-ci/app/config/routing_dev.yml
