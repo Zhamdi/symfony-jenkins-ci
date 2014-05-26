@@ -84,7 +84,7 @@
 
 <target name="phpcs" description="Find coding standard violations using PHP_CodeSniffer and print human readable output. Intended for usage on the command line before committing.">
  <exec executable="phpcs">
-  <arg value="--standard=${basedir}/app/build/phpcs.xml"/>
+  <arg value="--standard"/>
   <arg path="${basedir}/src"/>
  </exec>
 </target>
@@ -93,7 +93,7 @@
  <exec executable="phpcs" output="/dev/null">
   <arg value="--report=checkstyle"/>
   <arg value="--report-file=${basedir}/app/build/logs/checkstyle.xml"/>
-  <arg value="--standard=${basedir}/app/build/phpcs.xml"/>
+  <arg value="--standard"/>
   <arg path="${basedir}/src"/>
  </exec>
 </target>
