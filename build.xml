@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="symfony-ci" default="build">
-   <target name="build" depends="prepare,vendors,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,phpunit" />
+   <target name="build" depends="prepare,vendors,lint,phploc,pdepend,phpmd-ci,phpcs-ci,phpcpd,,phpdoc,phpunit" />
    <target name="build-parallel" depends="prepare,lint,tools-parallel,phpunit" />
    <target name="tools-parallel" description="Run tools in parallel">
       <parallel threadCount="2">
@@ -11,6 +11,7 @@
          <antcall target="phpcpd" />
          <antcall target="phpcs-ci" />
          <antcall target="phploc" />
+         <antcall target="phpdoc"/>
       </parallel>
    </target>
    <target name="clean" description="Cleanup build artifacts">
@@ -89,6 +90,11 @@
          <arg path="${basedir}/src" />
       </exec>
    </target>
+   <target name="phpdoc" description="Generate API documentation using phpDox">
+    <exec executable="phpdoc">
+      <arg line="-d '${basedir}/src' -t '${basedir}/app/build/docs' --title='Tempo' " />
+    </exec>
+  </target>
    <target name="phpunit" description="Run unit tests with PHPUnit">
       <exec executable="phpunit" failonerror="true">
          <arg value="-c" />
