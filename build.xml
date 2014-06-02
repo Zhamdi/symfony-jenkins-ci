@@ -20,7 +20,7 @@
       <delete dir="${basedir}/app/build/logs" />
       <delete dir="${basedir}/app/build/pdepend" />
       <delete dir="${basedir}/app/build/code-browser" />
-      <delete dir="${basedir}/app/build/docs/*"/>
+      <delete dir="${basedir}/app/build/docs"/>
    </target>
    <target name="prepare" depends="clean" description="Prepare for build">
       <mkdir dir="${basedir}/app/build/api" />
